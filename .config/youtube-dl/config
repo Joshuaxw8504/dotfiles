@@ -1,0 +1,24 @@
+# ignores errors, ex. skipping unavailable errors in a playlist
+-i
+
+# keeps an archive of all videos downloaded, and only downloads new videos
+# --download-archive ~/.config/youtube-dl/archive.txt
+
+# avoids characters in filenames that may cause bugs
+--restrict-filenames
+
+# prints progress bar as newlines
+--newline
+
+# prints additional debugging information
+-v
+
+# download subtitles
+--write-sub --write-auto-sub --sub-lang en
+
+# recode video to mkv and embed subs
+--recode-video mkv
+--embed-subs
+
+# output file title template (TODO)
+-o '%(upload_date)s-%(title)s-(%(uploader)s).%(ext)s'

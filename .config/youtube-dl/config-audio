@@ -1,0 +1,22 @@
+# ignores errors, ex. skipping unavailable errors in a playlist
+-i
+
+# keeps an archive of all videos downloaded, and only downloads new videos
+# --download-archive ~/.config/youtube-dl/archive.txt
+
+# avoids characters in filenames that may cause bugs
+--restrict-filenames
+
+# prints progress bar as newlines
+--newline
+
+# prints additional debugging information
+-v
+
+# output file title template
+-o '%(title)s.%(ext)s'
+
+# extract audio
+-x --audio-format flac --audio-quality 0
+
+--recode-video mkv
