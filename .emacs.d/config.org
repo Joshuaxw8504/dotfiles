@@ -124,6 +124,7 @@ Vterm
 (use-package vterm
   :ensure t
   :init
+    (setq vterm-always-compile-module t)
     (defun run-in-vterm-kill (process event)
   "A process sentinel. Kills PROCESS's buffer if it is live."
   (let ((b (process-buffer process)))
