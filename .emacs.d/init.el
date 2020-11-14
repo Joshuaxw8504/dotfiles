@@ -22,7 +22,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(which-key general goto-chg evil-collection vterm evil zenburn-theme dracula-theme exwm xelb use-package async)))
+   '(hydra which-key general goto-chg evil-collection vterm evil zenburn-theme dracula-theme exwm xelb use-package async)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -69,15 +69,17 @@
 (global-set-key (kbd "s-k")    'windmove-up)
 (global-set-key (kbd "s-j")  'windmove-down)
 
-;;; Leader key keybindings
+;;; leader key keybindings
 (use-package general
   :ensure t
   :config
-  (setq general-describe-keybinding-sort-function #'general-sort-by-car)
+  ;;;(setq general-describe-keybinding-sort-function #'general-sort-by-car)
+  ;;;(general-auto-unbind-keys)
   (general-def '(normal visual insert emacs)
     :prefix "SPC"
     :non-normal-prefix "M-SPC"
-    "TAB" '(:ignore t :which-key "workspace")
+    "x" 'vterm
+    "TAB" '(hydra-zoom/body :which-key "workspace")
     "b" '(:ignore t :which-key "buffer")
     "f" '(:ignore t :which-key "file")
     "r" '(:ignore t :which-key "run") 
@@ -85,6 +87,14 @@
     "t" '(:ignore t :which-key "toggle")
     "w" '(:ignore t :which-key "window")
     ))
+
+(use-package hydra
+  :ensure t
+  :config
+  (defhydra hydra-zoom ()
+  "zoom"
+  ("g" text-scale-increase "in")
+  ("l" text-scale-decrease "out")))
 
 ;;; Theme
 (use-package zenburn-theme
