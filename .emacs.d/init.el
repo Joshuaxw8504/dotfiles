@@ -81,7 +81,7 @@
     "x" 'vterm
     "TAB" '(hydra-zoom/body :which-key "workspace")
     "b" '(:ignore t :which-key "buffer")
-    "f" '(:ignore t :which-key "file")
+    "f" '(hydra-file/body :which-key "file")
     "r" '(:ignore t :which-key "run") 
     "p" '(:ignore t :which-key "project")
     "t" '(:ignore t :which-key "toggle")
@@ -94,7 +94,11 @@
   (defhydra hydra-zoom ()
   "zoom"
   ("g" text-scale-increase "in")
-  ("l" text-scale-decrease "out")))
+  ("l" text-scale-decrease "out"))
+
+  (defhydra hydra-file ()
+    "file"
+    ("." find-file "find file")))
 
 ;;; Theme
 (use-package zenburn-theme
